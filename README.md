@@ -18,6 +18,9 @@ The validation and classification is done by simple if-statements.
 #### Object oriented
 The validation and classification is done by using object oriented techniques.
 
+#### Multithreaded
+The validation and classification is done in parallel using multithreading. 
+
 ----
 ## What is CodeKata?
 See [Wikipedia](https://en.wikipedia.org/wiki/Kata_(programming))
