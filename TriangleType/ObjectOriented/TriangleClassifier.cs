@@ -1,4 +1,4 @@
-﻿namespace Simplistic
+namespace ObjectOriented
 {
     using System.Text;
     using Model;
@@ -14,6 +14,53 @@
         public TriangleClassifier(IOutputter outputter)
         {
             _outputter = outputter;
+        }
+
+        public void Classify(TriangleSideLengths triangleSideLengths)
+        {
+            if (triangleSideLengths != null)
+            {
+                var errorMessage = new StringBuilder();
+                bool validationFailed = false;
+                if (triangleSideLengths.LengthOfSideA <= 0)
+                {
+                    errorMessage.AppendLine("Length of side A is not valid. Valid lengths are greater than 0.");
+                    validationFailed = true;
+                }
+                if (triangleSideLengths.LengthOfSideB <= 0)
+                {
+                    errorMessage.AppendLine("Length of side B is not valid. Valid lengths are greater than 0.");
+                    validationFailed = true;
+                }
+                if (triangleSideLengths.LengthOfSideC <= 0)
+                {
+                    errorMessage.AppendLine("Length of side C is not valid. Valid lengths are greater than 0.");
+                    validationFailed = true;
+                }
+                if (validationFailed)
+                {
+                    _outputter.WriteLine(errorMessage.ToString());
+                }
+                else
+                {
+                    var triangleTypes = new ITriangle[] {new EquilateralTriangle(), new IsoscelesTriangle(), new ScaleneTriangle()};
+
+                    bool matchFound = false;
+                    foreach (var triangleType in triangleTypes)
+                    {
+                        if (triangleType.DoMatch(triangleSideLengths))
+                        {
+                            matchFound = true;
+                            _outputter.WriteLine(triangleType.Description);
+                            break;
+                        }
+                    }
+                    if (!matchFound)
+                    {
+                        _outputter.WriteLine("Congratulations! You found a triangle that is not supposed to exist.");
+                    }
+                }
+            }
         }
 
         public TriangleSideLengths ParseAndValidateCommandLineArguments(string[] args)
@@ -32,7 +79,7 @@
                 bool argumentForLengthOfSideBIsOk = int.TryParse(args[1], out lengthOfSideB);
                 int lengthOfSideC;
                 bool argumentForLengthOfSideCIsOk = int.TryParse(args[2], out lengthOfSideC);
-                
+
                 var errorMessage = new StringBuilder();
                 bool validationFailed = false;
                 if (!argumentForLengthOfSideAIsOk || !argumentForLengthOfSideBIsOk || !argumentForLengthOfSideCIsOk)
@@ -83,55 +130,6 @@
             }
 
             return triangleSideLengths;
-        }
-
-        public void Classify(TriangleSideLengths triangleSideLengths)
-        {
-            var errorMessage = new StringBuilder();
-            bool validationFailed = false;
-            if (triangleSideLengths.LengthOfSideA <= 0)
-            {
-                errorMessage.AppendLine("Length of side A is not valid. Valid lengths are greater than 0.");
-                validationFailed = true;
-            }
-            if (triangleSideLengths.LengthOfSideB <= 0)
-            {
-                errorMessage.AppendLine("Length of side B is not valid. Valid lengths are greater than 0.");
-                validationFailed = true;
-            }
-            if (triangleSideLengths.LengthOfSideC <= 0)
-            {
-                errorMessage.AppendLine("Length of side C is not valid. Valid lengths are greater than 0.");
-                validationFailed = true;
-            }
-            if (validationFailed)
-            {
-                _outputter.WriteLine(errorMessage.ToString());
-            }
-            else
-            {
-                if (triangleSideLengths.LengthOfSideA == triangleSideLengths.LengthOfSideB &&
-                    triangleSideLengths.LengthOfSideB == triangleSideLengths.LengthOfSideC)
-                {
-                    _outputter.WriteLine("All sides have the same length. That means that the triangle is equilateral.");
-                }
-                else if (triangleSideLengths.LengthOfSideA == triangleSideLengths.LengthOfSideB ||
-                         triangleSideLengths.LengthOfSideA == triangleSideLengths.LengthOfSideC ||
-                         triangleSideLengths.LengthOfSideB == triangleSideLengths.LengthOfSideC)
-                {
-                    _outputter.WriteLine("Two sides have the same length. That means that the triangle is isosceles.");
-                }
-                else if (triangleSideLengths.LengthOfSideA != triangleSideLengths.LengthOfSideB &&
-                         triangleSideLengths.LengthOfSideA != triangleSideLengths.LengthOfSideC &&
-                         triangleSideLengths.LengthOfSideB != triangleSideLengths.LengthOfSideC)
-                {
-                    _outputter.WriteLine("No sides have the same length. That means that the triangle is scalene.");
-                }
-                else
-                {
-                    _outputter.WriteLine("Congratulations! You found a triangle that are is supposed to exist.");
-                }
-            }
         }
 
         private void ShowUsage()

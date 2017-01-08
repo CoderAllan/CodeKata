@@ -1,4 +1,4 @@
-namespace Simplistic
+namespace Model
 {
     public class TriangleSideLengths
     {

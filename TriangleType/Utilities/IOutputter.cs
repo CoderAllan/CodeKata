@@ -1,4 +1,4 @@
-﻿namespace Simplistic
+namespace Utilities
 {
     public interface IOutputter
     {

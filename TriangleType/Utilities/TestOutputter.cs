@@ -1,4 +1,4 @@
-namespace Simplistic.Tests
+namespace Utilities
 {
     public class TestOutputter : IOutputter
     {

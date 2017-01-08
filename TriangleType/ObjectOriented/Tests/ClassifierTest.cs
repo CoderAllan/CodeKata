@@ -1,5 +1,5 @@
 
-namespace Simplistic.Tests
+namespace ObjectOriented.Tests
 {
     using System.Collections.Generic;
     using Microsoft.VisualStudio.TestTools.UnitTesting;

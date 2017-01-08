@@ -15,10 +15,11 @@ Write a program that determines the type of a triangle.
 #### Simplistic
 The validation and classification is done by simple if-statements.
 
+#### Object oriented
+The validation and classification is done by using object oriented techniques.
 
 ----
 ## What is CodeKata?
 See [Wikipedia](https://en.wikipedia.org/wiki/Kata_(programming))
 
 > A code kata is an exercise in programming which helps a programmer hone their skills through practice and repetition.
-

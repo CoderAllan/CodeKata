@@ -1,4 +1,4 @@
-namespace Simplistic.Tests
+namespace ObjectOriented.Tests
 {
     using System;
     using System.Collections.Generic;
