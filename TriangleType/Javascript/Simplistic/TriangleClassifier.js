@@ -58,7 +58,7 @@ function ParseAndValidateCommandLineArguments(lengthOfSideA, lengthOfSideB, leng
         return triangleSideLengths;
     }
 }
-function ClassifyTirangle(a, b, c){
+function ClassifyTriangle(a, b, c){
     var triangleSideLengths = ParseAndValidateCommandLineArguments(a, b, c);
     if(triangleSideLengths instanceof Array){
         return triangleSideLengths;

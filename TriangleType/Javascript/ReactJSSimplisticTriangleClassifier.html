@@ -55,7 +55,7 @@
     handleSubmit: function(event){
       event.preventDefault();
       this.setState({
-        triangleType: ClassifyTirangle(this.state.lengthSideA, this.state.lengthSideB, this.state.lengthSideC)
+        triangleType: ClassifyTriangle(this.state.lengthSideA, this.state.lengthSideB, this.state.lengthSideC)
       });
     },
     render: function () {
