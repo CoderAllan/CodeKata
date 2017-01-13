@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>TriangleClassifier - JQuery</title>
+</head>
+
+<body>
+  <h1>TriangleClassifier - JQuery</h1>
+  <h4>Write a program that determines the type of a triangle.</h4>
+  <ul>
+    <li>It should take the lengths of the triangle's three sides as input, and return whether the triangle is equilateral, isosceles or scalene(ligesidede, ligebenet eller scalene).</li>
+    <li>Also consider tests, documentation and/or errors.</li>
+    <li>You can use a language of your own choice.</li>
+  </ul>
+  <h4>Classify triangle</h4>
+  <script src="JQuery/jquery-3.1.1.min.js"></script>
+  <script src="Simplistic/TriangleClassifier.js"></script>
+  <script type="text/javascript">
+    function doClassifyTriangle(){
+      event.preventDefault(event);
+      var lengthSideA = $('#lengthSideAField').val();
+      var lengthSideB = $('#lengthSideBField').val();
+      var lengthSideC = $('#lengthSideCField').val();
+      var triangleType = ClassifyTriangle(lengthSideA, lengthSideB, lengthSideC);
+      $('#triangleClassificationResult').find('li').remove();
+      $.map(triangleType, function(value){
+        $('#triangleClassificationResult').append('<li>'+ value +'</li>');
+      });
+    };
+  </script>
+  <form>
+    Length side a: <input type="text" id="lengthSideAField" /><br/>
+    Length side b: <input type="text" id="lengthSideBField" /><br/>
+    Length side c: <input type="text" id="lengthSideCField" /><br/>
+    <button onClick="doClassifyTriangle();">Classify</button>
+    <ul id="triangleClassificationResult">      
+    </ul>
+  </form>
+</body>
+</html>
