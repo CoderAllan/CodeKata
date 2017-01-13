@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>TriangleClassifier - ReactJS</title>
+</head>
+
+<body>
+  <h1>TriangleClassifier - ReactJS</h1>
+  <h4>Write a program that determines the type of a triangle.</h4>
+  <ul>
+    <li>It should take the lengths of the triangle's three sides as input, and return whether the triangle is equilateral, isosceles or scalene(ligesidede, ligebenet eller scalene).</li>
+    <li>Also consider tests, documentation and/or errors.</li>
+    <li>You can use a language of your own choice.</li>
+  </ul>
+  <h4>Classify triangle</h4>
+  <script src="build/react.js"></script>
+  <script src="build/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+  <script src="SimplisticTriangleClassifier.js"></script>
+  <script type="text/babel">
+  var List = React.createClass({
+    render: function(){
+      return (
+      <ul>
+      {this.props.items.map(function(item) { return <li key={item}>{item}</li>})}
+      </ul>
+      )}
+  });
+  var Content = React.createClass({
+    getInitialState: function () {
+      return { 
+        lengthSideA: 0,
+        lengthSideB: 0,
+        lengthSideC: 0,
+        triangleType: []
+      };
+    },
+    lengthSideAChanged: function(e) {
+      this.setState({
+        lengthSideA: e.target.value
+      });
+    },
+    lengthSideBChanged: function(e) {
+      this.setState({
+        lengthSideB: e.target.value
+      });
+    },
+    lengthSideCChanged: function(e) {
+      this.setState({
+        lengthSideC: e.target.value
+      });
+    },
+    handleSubmit: function(event){
+      event.preventDefault();
+      this.setState({
+        triangleType: ClassifyTirangle(this.state.lengthSideA, this.state.lengthSideB, this.state.lengthSideC)
+      });
+    },
+    render: function () {
+      return (
+    <form action="" onSubmit={this.handleSubmit}>
+        Length side a: <input type="text" name="lengthSideAField" onKeyUp={this.lengthSideAChanged} /><br/>
+        Length side b: <input type="text" name="lengthSideBField" onKeyUp={this.lengthSideBChanged} /><br/>
+        Length side c: <input type="text" name="lengthSideAField" onKeyUp={this.lengthSideCChanged} /><br/>
+    <button onClick={this.handleSubmit}>Classify</button>
+          <List items={this.state.triangleType}/>
+        </form>
+      );
+    }
+  });
+
+  ReactDOM.render(
+    <Content />,
+    document.getElementById('container')
+  );
+  </script>
+<div id="container"></div>
+</body>
+
+</html>

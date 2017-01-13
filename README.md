@@ -2,24 +2,10 @@
 
 *See below for an explanation of 'CodeKata'*
 
-## Triangle classification
+This is a collection of exercises i have been doing to test different approaches for implementing different problems.
 
-Write a program that determines the type of a triangle.
+* Triangle classification. Implementations in C# and Javascript/ReactJS
 
-* It should take the lengths of the triangle's three sides as input, and return whether the triangle is equilateral, isosceles or scalene (*Danish translation: ligesidede, ligebenet eller scalene*).
-* Also consider tests, documentation and/or errors.
-* You can use a language of your own choice.
-
-### Approaches
-
-#### Simplistic
-The validation and classification is done by simple if-statements.
-
-#### Object oriented
-The validation and classification is done by using object oriented techniques.
-
-#### Multithreaded
-The validation and classification is done in parallel using multithreading. 
 
 ----
 ## What is CodeKata?
