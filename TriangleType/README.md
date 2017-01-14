@@ -20,8 +20,6 @@ The validation and classification is done in parallel using multithreading. (C#)
 ### ReactJS
 The classification is implemented in javascript and using ReactJS for presentation
 
-----
-## What is CodeKata?
-See [Wikipedia](https://en.wikipedia.org/wiki/Kata_(programming))
+### jQuery
+The classification is implemented in javascript and using jQuery for presentation
 
-> A code kata is an exercise in programming which helps a programmer hone their skills through practice and repetition.

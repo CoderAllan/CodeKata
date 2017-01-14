@@ -4,7 +4,7 @@
 
 This is a collection of exercises i have been doing to test different approaches for implementing different problems.
 
-* Triangle classification. Implementations in C# and Javascript/ReactJS
+* Triangle classification. Implementations in C# and Javascript/ReactJS/jQuery
 
 
 ----
